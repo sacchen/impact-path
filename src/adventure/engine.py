@@ -34,6 +34,20 @@ def gather_context(ctx: SessionContext):
     )
     console.print()
 
+    console.print(
+        "  [dim]Sonnet[/dim] handles this well — short, contextual narration is its sweet spot.\n"
+        "  [dim]Opus[/dim] goes deeper on nuance and subtext, worth it if you want to really\n"
+        "  sit with it or are demoing to someone."
+    )
+    console.print()
+    model_choice = Prompt.ask(
+        "  [dim]Model[/dim]",
+        choices=["sonnet", "opus"],
+        default="sonnet",
+    )
+    llm.MODEL = "claude-opus-4-6" if model_choice == "opus" else "claude-sonnet-4-6"
+    console.print()
+
     years = Prompt.ask("  [dim]Years in EA[/dim]", default="6")
     ctx.character_answers["years_in_ea"] = years
 

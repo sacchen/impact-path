@@ -4,7 +4,7 @@ import anthropic
 from .config import get_api_key
 
 client: anthropic.Anthropic | None = None
-MODEL = "claude-opus-4-6"
+MODEL = "claude-sonnet-4-6"  # swap to claude-opus-4-6 for richer narration
 
 
 def _client() -> anthropic.Anthropic:
