@@ -1,9 +1,9 @@
 # Impact Clarity
 
-A choose-your-own-adventure CLI game for figuring out your path in effective altruism.
+A choose-your-own-adventure CLI for figuring out your EA impact path.
 
-Built for people who are deep in EA and feel stuck — not beginners looking for an intro.
-Uses Claude to narrate and personalize each branch based on your context.
+Built for people who are deep in it and feel stuck — not beginners looking for an intro.
+Claude narrates and personalizes each branch based on what you share as you go.
 
 ---
 
@@ -12,18 +12,12 @@ Uses Claude to narrate and personalize each branch based on your context.
 **Requires:** [uv](https://docs.astral.sh/uv/getting-started/installation/) and an [Anthropic API key](https://console.anthropic.com/settings/keys)
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/choose-adventure
-cd choose-adventure
+git clone https://github.com/sacchen/impact-path
+cd impact-path
 uv run adventure
 ```
 
-On first run it will ask for your API key and save it to `~/.config/choose-adventure/key`.
-
-Or set it as an env variable:
-
-```bash
-ANTHROPIC_API_KEY=sk-ant-... uv run adventure
-```
+On first run it will ask for your API key (saved to `~/.config/choose-adventure/key`, masked input, not committed to git) and which model to use. After that it just runs.
 
 ---
 
@@ -32,26 +26,32 @@ ANTHROPIC_API_KEY=sk-ant-... uv run adventure
 | Key | Action |
 |-----|--------|
 | `1` `2` `3`... | Choose a path |
-| `f` | Speak freely — Claude will route you |
-| `g` | Show your path map so far |
+| `f` | Speak freely — Claude routes you |
+| `g` | Show your path map |
 | `q` | Quit |
+
+---
+
+## Model choice
+
+At startup you'll be asked: **Sonnet** or **Opus**?
+
+- **Sonnet** — handles this well. Short contextual narration is its sweet spot. (~$0.05/session)
+- **Opus** — goes deeper on nuance and subtext, worth it if you want to really sit with it or are demoing to someone. (~$0.08/session)
+
+A "session" is one full playthrough — start to a leaf node, roughly 8–10 nodes. Not per message.
 
 ---
 
 ## How it works
 
-Pre-authored decision tree (14 nodes) covering the most common places people get stuck:
-skill/fit doubts, unclear what "enough" means, nuanced EA views, student constraints,
-cause area exploration (AI safety + animal welfare), and leaf nodes with concrete reframes.
-
-Claude personalizes the narration at each node using your accumulated context — cause areas,
-background, things you've said, and insights from your choices.
+14 pre-authored nodes covering the most common stuck points: skill/fit doubts, unclear what "enough" means, nuanced EA views, student constraints, cause area exploration (AI safety + animal welfare). Claude personalizes the narration at each node using your context — cause areas, background, things you've said, insights from earlier choices.
 
 ---
 
 ## Extending
 
-Routes live in `routes/*.yaml`. Each node:
+Routes live in `routes/*.yaml`. Drop in a new file and it's picked up automatically.
 
 ```yaml
 - id: my_node
@@ -64,12 +64,3 @@ Routes live in `routes/*.yaml`. Each node:
     - label: "Something else"
       type: free_response
 ```
-
-Add a new `.yaml` file to `routes/` and it's picked up automatically.
-
----
-
-## Cost
-
-~$0.10–0.20 per session (Anthropic API, Claude Opus 4.6).
-Get a key at [console.anthropic.com](https://console.anthropic.com/settings/keys).
