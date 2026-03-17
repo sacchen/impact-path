@@ -32,8 +32,27 @@ Has tried the standard paths without landing.
 - Claude does three things: narrate, commentary, route free responses — all in `src/adventure/claude.py`
 - Session context accumulates in `SessionContext` dataclass, serialized to a text block passed in every Claude call
 - Claude never sees the graph structure — only narrative text and context
-- Model: `claude-opus-4-6`
 - Graph explorer at end of session uses `rich.tree` + `networkx`
+
+## Model
+
+- Default: `claude-sonnet-4-6` — handles short contextual narration well
+- Option: `claude-opus-4-6` — better nuance, worth it for demos or deep sessions
+- User chooses at startup with a short honest pitch; Sonnet is default
+- Cost: Sonnet ~$0.05/session, Opus ~$0.08/session (session = one full playthrough, ~8-10 nodes)
+
+## API key
+
+- Stored at `~/.config/choose-adventure/key` (outside repo, `chmod 0o600`, masked input)
+- Falls back to `ANTHROPIC_API_KEY` env var
+- `.env` approach was considered and rejected — `~/.config` is cleaner and already solved it
+
+## Distribution
+
+- GitHub: https://github.com/sacchen/impact-path
+- CLI chosen over web (demo this week, users bring their own key)
+- Share: `git clone https://github.com/sacchen/impact-path && cd impact-path && uv run adventure`
+- Web version is a future option if broader reach is needed
 
 ## Running
 
@@ -41,10 +60,11 @@ Has tried the standard paths without landing.
 uv run adventure
 ```
 
-Requires `ANTHROPIC_API_KEY` in environment.
+First run prompts for API key, saves it, never asks again.
 
 ## Extending
 
 - Add new routes: drop a `.yaml` into `routes/` following the same node format
 - Add new Claude behaviors: add a function to `claude.py`
 - The `claude_hint` field in each node guides narration without being shown to the user
+- Swap backends: `from . import claude_cli as llm` for CC subscription (slower, ~8s/call)
