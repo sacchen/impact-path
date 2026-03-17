@@ -1,0 +1,37 @@
+nodes:
+  - id: clarity_next_steps
+    narrative: |
+      You've been exploring. Here's what seems true: you have a real profile —
+      relationships, writing, operations, six years of context — and genuine
+      interests in areas where that profile matters. The gap isn't talent or
+      commitment. It might be a track record gap, a visibility gap, or just
+      not having found the right specific role yet. There are concrete moves
+      available to you. What's the one thing you'd want to do in the next month?
+    claude_hint: "Summarize the journey. Be specific about 2-3 concrete next actions
+      based on everything they've shared — not generic advice, but things that make
+      sense for their actual profile and constraints. Make it feel possible and
+      finite, not like another overwhelming list. One foot forward."
+    is_leaf: true
+    choices:
+      - label: "Show me the map of where I've been"
+        next: _end
+      - label: "Go back to the beginning — I want to explore differently"
+        next: start
+
+  - id: clarity_reframe
+    narrative: |
+      Maybe the most useful thing isn't a clearer action plan right now.
+      It's a reframe. The question 'am I doing enough?' might be wrong.
+      The right question might be: what am I actually good at, what do I
+      genuinely care about, and what would it look like to do that thing
+      seriously — not because EA says to, but because it's yours?
+    claude_hint: "This is a gentle redirect away from performance-pressure framing.
+      Help them land on a question that's generative rather than guilt-inducing.
+      What would 'doing your thing seriously' actually look like for this specific
+      person, given what they've shared? Be concrete, not philosophical."
+    is_leaf: true
+    choices:
+      - label: "I want to sit with this"
+        next: _end
+      - label: "I want to explore what 'my thing' might be"
+        next: unclear_enough

@@ -1,0 +1,41 @@
+nodes:
+  - id: start
+    narrative: |
+      You've been in this for six years. Six years of reading, going to EAGs,
+      having the conversations, watching people around you make what looked like
+      big moves. You've contributed — in adjacent ways, in ways that matter to
+      people. But something sits unresolved. A question you keep returning to:
+      am I actually doing enough?
+    claude_hint: "Open with the weight of this moment. Six years is long enough to
+      feel the gap between intention and output. Don't rush to reassure — let the
+      tension be real before exploring it. Reference what they've shared about
+      themselves if you have it."
+    choices:
+      - label: "I doubt I'm cut out for top direct work"
+        next: skill_doubts
+      - label: "I'm not even sure what 'enough' means anymore"
+        next: unclear_enough
+      - label: "I've already tried the standard paths and they haven't worked"
+        next: tried_standard_path
+      - label: "Something else is going on"
+        type: free_response
+
+  - id: tried_standard_path
+    narrative: |
+      You've applied to top orgs. You've had the conversations with advisors,
+      read the career guides, explored the pivots. The standard playbook hasn't
+      clicked — and that's worth sitting with. It might mean the path needs
+      adjusting. It might mean something about how you've been trying.
+      It might just mean timing.
+    claude_hint: "Be curious, not dismissive. The fact that standard paths haven't
+      worked is data. Explore whether this is a 'wrong path' problem, an 'execution'
+      problem, a 'timing' problem, or a 'wrong definition of success' problem."
+    choices:
+      - label: "I applied and got rejected or ghosted"
+        next: skill_doubts
+      - label: "I pulled back myself — not sure why"
+        next: unclear_enough
+      - label: "Life constraints have been real"
+        next: student_constraints
+      - label: "I'm not sure what happened"
+        type: free_response

@@ -1,0 +1,62 @@
+nodes:
+  - id: skill_doubts
+    narrative: |
+      The doubt is familiar by now. You've watched people who seem more
+      credentialed, more certain — get the fellowship, the job, the recognition.
+      And you've wondered if there's something fundamental you're missing.
+      But doubt isn't always accurate. Sometimes it's signal. Sometimes it's noise.
+      The question is which one this is.
+    claude_hint: "Help them distinguish between genuine skill gaps versus imposter
+      syndrome. Be specific — what evidence do they actually have for the doubt?
+      Someone with 6 years of ops, writing, and relationships isn't starting from zero.
+      Name what they've built."
+    choices:
+      - label: "I think there are real gaps I haven't closed"
+        next: skill_gap_real
+      - label: "Honestly it might be more imposter syndrome"
+        next: adjacent_reframe
+      - label: "I don't know what top orgs actually need from someone like me"
+        next: adjacent_reframe
+      - label: "Let me just say what I'm actually feeling"
+        type: free_response
+
+  - id: adjacent_reframe
+    narrative: |
+      Six years of ops, relationships, and writing. That's not nothing —
+      that's actually a profile many orgs are hungry for.
+      The EA ecosystem runs on people who can hold things together,
+      communicate well, and know the landscape deeply.
+      You might be underselling what you've already built.
+    claude_hint: "Gently challenge the 'adjacent = not direct' framing. Orgs like
+      Open Phil, EA Funds, ACE, CAIS have serious ops/comms/research support needs.
+      Writing is influence. Six years of relationships is a network. Don't be
+      saccharine about it — just accurate."
+    choices:
+      - label: "Maybe I've been defining 'direct' too narrowly"
+        next: research_path
+      - label: "I still want something that feels more on the object level"
+        next: cause_ai
+      - label: "I want to think about what I could start or build"
+        next: side_project_path
+      - label: "I need to figure out what I actually want first"
+        next: unclear_enough
+
+  - id: skill_gap_real
+    narrative: |
+      Okay — there's a real gap. That's actually useful to know.
+      Gaps can be closed, but only once you've named them clearly.
+      Is it technical skills? A publication track record? Visibility —
+      the right people not knowing you exist? Or something you haven't
+      shipped yet? Each of these has a different path forward.
+    claude_hint: "Help them get specific. Is it Python/stats? A publication gap?
+      A 'nobody knows who I am' gap? A 'I haven't shipped anything concrete' gap?
+      Specificity unlocks action. Vague gaps just produce vague anxiety."
+    choices:
+      - label: "I lack technical skills certain roles need"
+        next: research_path
+      - label: "I don't have a track record of finishing things"
+        next: side_project_path
+      - label: "The right people don't know I exist"
+        next: research_path
+      - label: "My constraints make it hard to invest in closing gaps right now"
+        next: student_constraints

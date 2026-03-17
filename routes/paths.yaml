@@ -1,0 +1,147 @@
+nodes:
+  - id: unclear_enough
+    narrative: |
+      "Enough" is doing a lot of work in that sentence. Enough by whose
+      standards? The community's? Your past self's? An imagined version of you
+      who made different choices? Sometimes the feeling of not doing enough
+      isn't about the amount of work — it's about the distance between what
+      you're doing and what feels like yours.
+    claude_hint: "This is a values clarity issue as much as a tactics issue. Help
+      them interrogate the 'enough' standard itself. Who set it? Is it the right
+      measure? Don't rush to fix the feeling — help them see where it comes from."
+    choices:
+      - label: "I want my day-to-day work to feel more mission-aligned"
+        next: cause_ai
+      - label: "I want something concrete I can point to"
+        next: side_project_path
+      - label: "I've been holding EA more loosely — not sure it's the right frame"
+        next: nuanced_ea
+      - label: "I want to figure out what post-graduation looks like"
+        next: research_path
+
+  - id: nuanced_ea
+    narrative: |
+      Six years is long enough to have watched the movement closely —
+      the parts that work, the parts that feel off, the culture, the epistemics,
+      the occasional insularity. Holding EA more loosely might not be doubt.
+      It might be maturity. The question is what parts still feel true to you.
+    claude_hint: "Don't be defensive of EA. Let them explore what feels off without
+      judgment. Many thoughtful people have updated away from parts of EA orthodoxy
+      while keeping the core commitment to doing good seriously. That's fine and
+      maybe healthy. Help them figure out what's signal versus disillusionment."
+    choices:
+      - label: "I still care about the core questions — I just hold it differently"
+        next: unclear_enough
+      - label: "I want to do serious work that's less filtered through EA specifically"
+        next: cause_ai
+      - label: "I want to think about whether EA is even still my frame"
+        next: clarity_reframe
+      - label: "I'm not sure what I believe right now"
+        type: free_response
+
+  - id: research_path
+    narrative: |
+      Research contribution doesn't always mean 'get a PhD and publish papers.'
+      Someone who knows the landscape, can synthesize, writes clearly, and
+      understands the community — that profile matters. The EA Forum, independent
+      research, orgs like ACE and CAIS — these need people who can think and
+      communicate, not just people with credentials.
+    claude_hint: "Be concrete about what 'research contribution' could mean for
+      someone with their background. EA Forum posts that shift discourse. Independent
+      synthesis pieces. Working at ACE, CAIS, or GovAI in a research-support role.
+      Co-authoring with researchers. Writing that builds a reputation over time."
+    choices:
+      - label: "I want to write or publish something"
+        next: side_project_path
+      - label: "I'm interested in research-adjacent roles at orgs"
+        next: cause_ai
+      - label: "I want to explore animal welfare research specifically"
+        next: cause_animal
+      - label: "I want to understand what AI safety support roles look like"
+        next: cause_ai
+
+  - id: cause_ai
+    narrative: |
+      AI safety and governance is a big space with real need for people who
+      aren't just technical researchers. Policy, communications, operations,
+      field-building, research support — orgs like CAIS, ARC, GovAI, and the
+      major policy shops all need people who understand the landscape and can
+      contribute in non-technical ways. Your background isn't a liability here.
+    claude_hint: "Be specific about non-technical entry points: CAIS operations,
+      AI policy orgs (GovAI, CLTR, RAND), EA comms/outreach roles, field-building.
+      The field is young enough that a serious independent thinker with good writing
+      can contribute meaningfully. Name concrete orgs they could realistically apply to."
+    choices:
+      - label: "I want to think about specific orgs or roles to target"
+        next: clarity_next_steps
+      - label: "I want to build a track record before applying"
+        next: side_project_path
+      - label: "I'm actually more drawn to animal welfare"
+        next: cause_animal
+      - label: "I want to understand what I'd need to be competitive"
+        next: clarity_next_steps
+
+  - id: cause_animal
+    narrative: |
+      Animal welfare has a different profile than AI safety — often more concrete,
+      smaller orgs, and real need for operations, research support, and
+      communications. ACE does research and recommendations. Corporate campaigners
+      change actual policy at scale. The Humane League and Mercy For Animals
+      are doing direct work that moves numbers. This might be a more accessible
+      entry point than you think.
+    claude_hint: "ACE is a solid fit for someone with research/writing background.
+      Corporate campaigns have clear measurable outcomes and don't require credentials.
+      Animal welfare is less credential-heavy than AI safety and arguably has more
+      room for someone with ops and writing skills. Be honest about the tradeoffs."
+    choices:
+      - label: "I want to explore ACE or research orgs"
+        next: clarity_next_steps
+      - label: "I'm interested in corporate campaign work"
+        next: clarity_next_steps
+      - label: "I want to build a track record first"
+        next: side_project_path
+      - label: "I want to keep both AI safety and animal welfare open"
+        next: clarity_next_steps
+
+  - id: side_project_path
+    narrative: |
+      The project you're already working on might be more than a side project.
+      It might be a proof of concept, a portfolio piece, a way of learning,
+      a thing you can point to. Starting something with real scope and
+      finishing it is worth more than most people think. The EA ecosystem
+      notices people who ship. What would it look like to take it more seriously?
+    claude_hint: "Frame the side project as potentially direct impact AND a track
+      record builder. Ask what it would look like to finish one thing completely.
+      Don't let them spiral into whether it's the 'right' project — help them
+      think about scoping something small enough to finish and meaningful enough
+      to matter."
+    choices:
+      - label: "I want to think about how to scope and finish something"
+        next: clarity_next_steps
+      - label: "I want to connect it to a cause area I care about"
+        next: cause_ai
+      - label: "I'm not sure this project is the right one"
+        next: unclear_enough
+      - label: "I want to think about what to do after school"
+        next: student_constraints
+
+  - id: student_constraints
+    narrative: |
+      Being a student is real — the time constraints, the financial precarity,
+      the sense that you're not quite in a position to go all in yet.
+      But 'student' can also be a frame that gives you permission to try things
+      without the full weight of career decisions. What would it look like
+      to use the next year or two well, given what you actually have?
+    claude_hint: "Reframe student constraints as also student freedoms. You can
+      try things, publish things, connect with people, build a track record —
+      without it being 'this is my career.' Ask what they'd want to have done
+      by graduation. Make it feel possible, not overwhelming."
+    choices:
+      - label: "I want to think about what to do before graduation"
+        next: side_project_path
+      - label: "I want to plan for what comes after school"
+        next: clarity_next_steps
+      - label: "I want to do something with clear impact right now, even if small"
+        next: research_path
+      - label: "I want to give myself permission to not have this figured out"
+        next: clarity_reframe
