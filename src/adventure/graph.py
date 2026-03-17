@@ -1,6 +1,5 @@
 import networkx as nx
 from rich.console import Console
-from rich.tree import Tree
 from rich.panel import Panel
 
 
@@ -23,22 +22,64 @@ def show_graph_explorer(
     console: Console,
     all_nodes: list[dict],
 ):
-    node_labels = {n["id"]: n.get("narrative", n["id"])[:60].strip() for n in all_nodes}
+    node_labels = {n["id"]: n.get("narrative", n["id"])[:55].strip() for n in all_nodes}
+    G = build_graph(all_nodes)
 
     console.print()
     console.rule("[bold cyan]Your Path[/bold cyan]")
     console.print()
 
-    # Path tree
+    # Path flow: visited nodes with arrows + unexplored branches at each step
     if visited_nodes:
-        tree = Tree(f"[bold yellow]{visited_nodes[0]}[/bold yellow]")
-        branch = tree
-        for node_id in visited_nodes[1:]:
+        visited_set = set(visited_nodes)
+
+        for i, node_id in enumerate(visited_nodes):
+            is_last = i == len(visited_nodes) - 1
+            indent = "  " * i
+
+            # Node box
             label = node_labels.get(node_id, node_id)
-            branch = branch.add(
-                f"[cyan]{node_id}[/cyan]  [dim]{label}...[/dim]"
-            )
-        console.print(tree)
+            marker = "◉" if is_last else "●"
+            color = "bold yellow" if i == 0 else ("bold cyan" if is_last else "cyan")
+            console.print(f"{indent}[{color}]{marker} {node_id}[/{color}]  [dim]{label}...[/dim]")
+
+            if not is_last:
+                # Show the edge label (choice taken)
+                next_id = visited_nodes[i + 1]
+                edge_label = G.edges.get((node_id, next_id), {}).get("label", "")
+                if edge_label:
+                    console.print(f"{indent}[dim]│  ╰─ chose: {edge_label}[/dim]")
+
+                # Show unexplored branches at this node
+                neighbors = list(G.successors(node_id))
+                unexplored = [n for n in neighbors if n not in visited_set and n != next_id]
+                for branch in unexplored:
+                    branch_label = node_labels.get(branch, branch)
+                    b_edge = G.edges.get((node_id, branch), {}).get("label", "")
+                    console.print(
+                        f"{indent}[dim]│  ╰╌ {branch}  {branch_label}...[/dim]"
+                        if not b_edge else
+                        f"{indent}[dim]│  ╰╌ {b_edge} → {branch}[/dim]"
+                    )
+
+                console.print(f"{indent}[dim]↓[/dim]")
+
+        # Unexplored from final node
+        final = visited_nodes[-1]
+        final_neighbors = list(G.successors(final))
+        unexplored_final = [n for n in final_neighbors if n not in visited_set]
+        if unexplored_final:
+            final_indent = "  " * (len(visited_nodes) - 1)
+            console.print(f"{final_indent}[dim]  Paths not taken from here:[/dim]")
+            for branch in unexplored_final:
+                b_edge = G.edges.get((final, branch), {}).get("label", "")
+                branch_label = node_labels.get(branch, branch)
+                console.print(
+                    f"{final_indent}  [dim]╰╌ {b_edge} → {branch}[/dim]"
+                    if b_edge else
+                    f"{final_indent}  [dim]╰╌ {branch}  {branch_label}...[/dim]"
+                )
+
         console.print()
 
     # Insights
@@ -54,7 +95,6 @@ def show_graph_explorer(
         console.print()
 
     # Stats
-    G = build_graph(all_nodes)
     total = G.number_of_nodes()
     explored = len(set(visited_nodes))
     pct = int(explored / total * 100) if total else 0

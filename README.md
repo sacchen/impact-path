@@ -1,9 +1,20 @@
 # Impact Clarity
 
-A choose-your-own-adventure CLI for figuring out your EA impact path.
+A choose-your-own-adventure CLI for people who've been seriously in EA for years and still feel like something's unresolved.
 
-Built for people who are deep in it and feel stuck — not beginners looking for an intro.
+Not for newcomers. Not a career guide. Built for the person who knows the framework, has tried the paths, and is still figuring out what's actually true for them — whether that's navigating the prestige hierarchy, holding EA more loosely, finding their footing in AI safety or animal welfare or governance, or just not knowing what move to make next.
+
 Claude narrates and personalizes each branch based on what you share as you go.
+
+---
+
+## Who this is for
+
+- You've been in EA for a while — fellowships, orgs, the forum, the conversations
+- You've tried things: applications, projects, pivots, pledges
+- You're somewhere between "fully bought in" and "holding it more loosely now"
+- You know what MATS and GovAI and QRI are, and have opinions
+- You feel stuck or unclear in a way the standard frameworks don't quite address
 
 ---
 
@@ -17,27 +28,29 @@ cd impact-path
 uv run adventure
 ```
 
-On first run it will ask for your API key (saved to `~/.config/choose-adventure/key`, masked input, not committed to git) and which model to use. After that it just runs.
+First run asks for your API key (saved to `~/.config/choose-adventure/key`, masked input, never committed) and which model to use. After that it just runs.
 
 ---
 
 ## Controls
 
-| Key | Action |
-|-----|--------|
+Type a number to choose a path, or just type what's on your mind — Claude will route you.
+
+| Input | Action |
+|-------|--------|
 | `1` `2` `3`... | Choose a path |
-| `f` | Speak freely — Claude routes you |
-| `g` | Show your path map |
+| anything else | Speak freely — Claude routes you |
+| `g` | Show your path so far |
 | `q` | Quit |
 
 ---
 
 ## Model choice
 
-At startup you'll be asked: **Sonnet** or **Opus**?
+At startup: **Sonnet** or **Opus**?
 
 - **Sonnet** — handles this well. Short contextual narration is its sweet spot. (~$0.05/session)
-- **Opus** — goes deeper on nuance and subtext, worth it if you want to really sit with it or are demoing to someone. (~$0.08/session)
+- **Opus** — goes deeper on nuance and subtext, worth it for demos or when you want to really sit with it. (~$0.08/session)
 
 A "session" is one full playthrough — start to a leaf node, roughly 8–10 nodes. Not per message.
 
@@ -45,7 +58,7 @@ A "session" is one full playthrough — start to a leaf node, roughly 8–10 nod
 
 ## How it works
 
-14 pre-authored nodes covering the most common stuck points: skill/fit doubts, unclear what "enough" means, nuanced EA views, student constraints, cause area exploration (AI safety + animal welfare). Claude personalizes the narration at each node using your context — cause areas, background, things you've said, insights from earlier choices.
+Pre-authored nodes covering real stuck points: skill and fit doubts, the comparison trap, adjacent work that doesn't feel like enough, unclear what "enough" even means, student constraints, cause area uncertainty, the post-EA question. Claude personalizes narration at each node using your context — what you've built, what you've tried, what you said earlier in the session.
 
 ---
 
