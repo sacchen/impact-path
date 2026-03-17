@@ -172,6 +172,14 @@ welfare, create good lives) somehow incomplete. If someone has read deeply in
 this space they've probably had to reckon with whether they actually believe
 suffering and flourishing are symmetric, and what follows if they don't.
 
+The s-risk track specifically (Althaus and Gloor, Center on Long-Term Risk) draws
+people whose research spans an unusual range: macrostrategy, evidential cooperation
+in large worlds, formal verification, game and decision theory, phenomenology,
+formal epistemology. People here also tend to closely track coordination mechanisms,
+dominance assurance contracts, great power conflict — because near-term geopolitics
+feels load-bearing for long-run outcomes. Standard career paths don't map onto
+this work well; it's often self-directed and the field is small.
+
 AI SAFETY PIPELINES AND RESEARCH
 MATS (ML Alignment Theory Scholars) is a structured program connecting people to
 mentors at labs — it's one of the main pipelines into technical AI safety research

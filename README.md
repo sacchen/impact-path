@@ -10,11 +10,17 @@ Claude narrates and personalizes each branch based on what you share as you go.
 
 ## Who this is for
 
-- You've been in EA for a while — fellowships, orgs, the forum, the conversations
-- You've tried things: applications, projects, pivots, pledges
-- You're somewhere between "fully bought in" and "holding it more loosely now"
-- You know what MATS and GovAI and QRI are, and have opinions
-- You feel stuck or unclear in a way the standard frameworks don't quite address
+People across the EA and adjacent landscape who've been at it for a while and feel something unresolved — whatever flavor that takes:
+
+- The person who's applied to orgs, done the fellowships, and still hasn't landed
+- The person doing ops or comms or writing who wonders if it counts
+- The person who's drifted post-EA but still cares about the underlying goals
+- The person deep in suffering-focused ethics, s-risks, formal decision theory
+- The person tracking AI governance, great power conflict, coordination problems
+- The person who found their way here through prediction markets or postrat Twitter
+- The person who holds EA loosely and isn't sure what framework fits better
+
+Common thread: you know the landscape, you've thought about it seriously, and the standard frameworks aren't fully answering your actual question.
 
 ---
 
